@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSG Growth HQ — Protect. Land. Expand.</title>
+<meta name="description" content="The Enterprise Sales team's home base. The story, the proof, the plays, and the tools to drive revenue growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-navy: #0b1421;
+    --dark-navy: #133865;
+    --brand-blue: #365aa0;
+    --steel-blue: #718dbc;
+    --light-blue: #c5d9fa;
+    --light-gray: #ededed;
+    --gold: #ebb018;
+    --bright-blue: #4e84de;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: var(--deep-navy);
+    background: #ffffff;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============ MOBILE-FIRST BASE ============ */
+
+  /* ---------- HERO (WHY) ---------- */
+  .hero {
+    background: linear-gradient(160deg, var(--deep-navy) 0%, var(--dark-navy) 85%);
+    color: #fff;
+    padding: 32px 20px 40px;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .hero-inner { max-width: 1100px; margin: 0 auto; }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .logo-img { height: 36px; width: auto; display: block; }
+
+  .logo-fallback {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-square {
+    width: 38px; height: 38px;
+    background: var(--gold);
+    display: grid; place-items: center;
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700; font-size: 20px;
+    color: var(--deep-navy);
+    flex-shrink: 0;
+  }
+
+  .logo-name {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 500; font-size: 14px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  .hq-title {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 8vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .ple {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 4vw, 22px);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .hero-why {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--light-blue);
+    max-width: 640px;
+    margin-bottom: 24px;
+  }
+
+  .hero-why strong { color: #fff; font-weight: 700; }
+
+  /* Client truths — the 3 things the client cares about */
+  .truths {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .truth {
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--gold);
+    padding: 12px 14px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .truth-num {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700; font-size: 12px;
+    letter-spacing: 2px; color: var(--gold);
+    text-transform: uppercase;
+    display: block; margin-bottom: 2px;
+  }
+
+  .truth p { font-size: 14px; color: #fff; font-weight: 400; }
+
+  .hero-motto {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--steel-blue);
+  }
+
+  /* ---------- SEARCH (sticky) ---------- */
+  .search-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    padding: 12px 20px;
+    box-shadow: 0 2px 12px rgba(11,20,33,0.10);
+  }
+
+  .search-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .search-input-wrap {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--light-gray);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .search-input-wrap svg { flex-shrink: 0; color: var(--steel-blue); }
+
+  #search {
+    flex: 1; border: none; outline: none;
+    background: transparent;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px; /* prevents iOS zoom */
+    color: var(--deep-navy);
+  }
+
+  #search::placeholder { color: var(--steel-blue); }
+
+  .tag-row {
+    display: flex; gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .tag-row::-webkit-scrollbar { display: none; }
+
+  .tag-chip {
+    flex-shrink: 0;
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--steel-blue);
+    color: var(--dark-navy);
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+  }
+
+  .tag-chip.active {
+    background: var(--dark-navy);
+    border-color: var(--dark-navy);
+    color: #fff;
+  }
+
+  /* ---------- MAIN ---------- */
+  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  .section { margin-bottom: 44px; scroll-margin-top: 130px; }
+
+  .section-kicker {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .section-title {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--dark-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .section-sub {
+    font-size: 14px;
+    color: #4a5568;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+
+  .section-rule {
+    border: none;
+    border-top: 2px solid var(--gold);
+    margin-bottom: 18px;
+    width: 56px;
+  }
+
+  /* ---------- CARDS ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--light-gray);
+    border-left: 4px solid var(--brand-blue);
+    border-radius: 6px;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 44px; /* touch target */
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  .card:active, .card:hover {
+    border-left-color: var(--gold);
+    box-shadow: 0 4px 14px rgba(19,56,101,0.12);
+  }
+
+  .card-top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 8px; gap: 8px;
+  }
+
+  .pill {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px;
+    background: var(--light-blue); color: var(--dark-navy);
+    white-space: nowrap;
+  }
+
+  .pill.new { background: var(--gold); color: var(--deep-navy); font-weight: 700; }
+  .pill.internal { background: var(--light-gray); }
+
+  .card-date { font-size: 11px; color: var(--steel-blue); white-space: nowrap; }
+
+  .card h3 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600; font-size: 17px;
+    color: var(--dark-navy);
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+
+  .card p { font-size: 13px; color: #4a5568; flex-grow: 1; }
+
+  .card-cta {
+    margin-top: 10px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    color: var(--brand-blue);
+  }
+
+  .card-cta::after { content: " →"; }
+
+  /* Placeholder card for decks not yet uploaded */
+  .card.soon {
+    border-left-color: var(--steel-blue);
+    background: #fafbfd;
+    cursor: default;
+  }
+  .card.soon .card-cta { color: var(--steel-blue); }
+  .card.soon .card-cta::after { content: ""; }
+
+  /* ---------- METHODOLOGY (HOW) ---------- */
+  .how-box {
+    background: var(--deep-navy);
+    border-radius: 8px;
+    padding: 24px 20px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .how-box h3 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600; font-size: 20px;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .how-steps { display: grid; gap: 12px; }
+
+  .how-step { display: flex; gap: 12px; align-items: flex-start; }
+
+  .how-num {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700; font-size: 15px;
+    width: 30px; height: 30px; flex-shrink: 0;
+    background: var(--gold); color: var(--deep-navy);
+    display: grid; place-items: center;
+    border-radius: 50%;
+  }
+
+  .how-step p { font-size: 14px; color: var(--light-blue); padding-top: 4px; }
+  .how-step p strong { color: #fff; }
+
+  /* ---------- WHAT IF (CTA close) ---------- */
+  .close-cta {
+    background: linear-gradient(160deg, var(--dark-navy), var(--brand-blue));
+    border-radius: 8px;
+    padding: 32px 20px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .close-cta h2 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 6vw, 36px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .close-cta p {
+    font-size: 15px; color: var(--light-blue);
+    max-width: 520px; margin: 0 auto 18px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--deep-navy);
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    min-height: 44px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--deep-navy);
+    color: var(--steel-blue);
+    padding: 24px 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  footer .grind {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  footer a { color: var(--light-blue); text-decoration: none; font-weight: 600; }
+
+  .empty-state {
+    text-align: center; padding: 40px 20px;
+    color: var(--steel-blue); font-size: 15px;
+    display: none;
+  }
+
+  /* ============ TABLET & DESKTOP ============ */
+  @media (min-width: 640px) {
+    .truths { grid-template-columns: repeat(3, 1fr); }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .search-inner { flex-direction: row; align-items: center; }
+    .search-input-wrap { flex: 1; }
+    .hero { padding: 48px 32px 56px; }
+    main { padding: 40px 32px 72px; }
+  }
+
+  @media (min-width: 980px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .how-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- INTAKE MODAL ---------- */
+  .cta-btn { border: none; cursor: pointer; }
+
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(11,20,33,0.75);
+    z-index: 100;
+    padding: 16px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal {
+    background: #fff;
+    border-radius: 10px;
+    border-top: 4px solid var(--gold);
+    max-width: 560px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px 20px;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute; top: 12px; right: 14px;
+    background: none; border: none;
+    font-size: 26px; line-height: 1;
+    color: var(--steel-blue);
+    cursor: pointer;
+    padding: 6px;
+    min-width: 44px; min-height: 44px;
+  }
+
+  .modal h3 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600; font-size: 22px;
+    text-transform: uppercase;
+    color: var(--dark-navy);
+    margin-bottom: 4px;
+    padding-right: 40px;
+  }
+
+  .modal .modal-sub {
+    font-size: 13px; color: #4a5568;
+    margin-bottom: 18px;
+  }
+
+  .field { margin-bottom: 14px; }
+
+  .field label {
+    display: block;
+    font-family: 'Oswald', Arial, sans-serif;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--dark-navy);
+    margin-bottom: 5px;
+  }
+
+  .field .hint {
+    font-size: 12px; color: var(--steel-blue);
+    font-weight: 400; text-transform: none; letter-spacing: 0;
+    display: block; margin-bottom: 5px;
+  }
+
+  .field input, .field textarea, .field select {
+    width: 100%;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 6px;
+    padding: 12px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 16px;
+    color: var(--deep-navy);
+    background: #fff;
+  }
+
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+  }
+
+  .field textarea { resize: vertical; min-height: 90px; }
+
+  .modal-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--deep-navy);
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 15px;
+    border: none; border-radius: 6px;
+    cursor: pointer;
+    min-height: 48px;
+  }
+
+  .modal-confirm {
+    display: none;
+    text-align: center;
+    padding: 20px 0 8px;
+  }
+
+  .modal-confirm .flame { font-size: 40px; margin-bottom: 8px; }
+
+  .modal-confirm h4 {
+    font-family: 'Oswald', Arial, sans-serif;
+    font-weight: 600; font-size: 20px;
+    text-transform: uppercase;
+    color: var(--dark-navy);
+    margin-bottom: 6px;
+  }
+
+  .modal-confirm p { font-size: 14px; color: #4a5568; }
+</style>
+</head>
+<body>
+
+<!-- ============ WHY — The client is the hero ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="logo-row">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUMAAACgCAYAAACWlA6fAAAgl0lEQVR42u2debRkVXXGf7uqXjMINDMKSpQZ1DiBzYwYIYCoaBTjYgiIInGEBGdYgCHKoIgaYwS01RADBCKIAoLiwCAJ0kwtSDfagGHugaahx1e188fZp+twu+q9elX3vle3an9r1aqm3mu67t33+86399nnHGGKoaoVoAI0RKSR+dlmwA7AzsBOwDbAlsBmwPrA2sA0YC8RuUNVqwAiUlfV/YHrgIb9/8uE+J0fAl4lIqtUVURE++HLqarY9xMRGc38bC2L004Wt+2BrYEtgA0tZusCl4nIMapaE5FRVa1a3K4EDgbqQLVkcRsFRoDPiMh58dr65ct1wLXtgV2AHS2GW3XItT2BX5aUaxHLalNMJkSkbjcRVX0xMAPYx953ADbv4H8pLT6rWPC0zc/7GfE7V00U+opMRvC6fTYCvAbYG9jL/vwyI89Y1zbS5ucjFrcyEqtqL+2jmLXj2hbGsX2BN5oAdss1KTHXIlbVpiIwFpRIppcBbwXeAewJbNDGKWly42Wc4LQiXxnFcFkcwafSFZoISiSTCeC+wDuBA81RtLqGRiZGkrgnHePa6SdBmWDcAJ7vFxHMcO2lwCHAYca16c61JtdqUxEYs9gHAccAf202PKKefMFK8j7WwzdoiNf1XLx/UyGGJoJEQVbV7YAjgPdaCpxNESXzqnboLAYF8dqe7RcRtBgeBPydvW/gXGuJJbVJCE41Ccx6wJHACZZOpUGJqW0VR8TC5L7Up4hQqOoM4KPAuwj1vuggYipbAWoertViuGAqBCTDtRfZwPX3wGuda+M6w4W1AgOzuk5hRfUPACcB22bsuAel/Sj8xGS7qaToX1fV3YDPmAimDrCSvBxNxPvx1GSKYYZr04DjjGvbO9c65trjtYIJhaq+CzgDeFUyMokTqSM8MskpsdrM7tbAqcD7LU6auEB3gGM7jKWTKYYZrr0TOB34S+fahPFQLefACNZuoarbA+cQirVpYHxk6hwPTrIbRFU/BpwGbJLErepx61gMnwDmT1IpI3JtW+BcwoSWc607zKnlGJxYr1BV/TDwRcJslQdm4oj3am6RDiOpDY6q6k7AN4E3J+lwzeM24XRrnvWFVrK9fAVx7QTgS4QeTuda96WN+2o5BSc2zm4O/FtmhPLAdOcwFgN/tM8aBRAqpsV1VT0WOJ8w0zhqMfN0uDsxvDchWRFxi1zbFPgW8G7nWs9cWwL8oZZjcPYC/h14RUIoD87E0bD7NkdEFhTRVpOs9hhR1W8AH0oI5SLYHeIk1x1FlzNUdXfgYsJkpHOtdzH8I/BYrYfApCnW3wEXELrQR51QuTiM25OUeTRHQkUhfDFwKaF52gmVT2mjkYhhI8eYCVA1rh0FXAis5VzLxXhUgDtERCs9BKdipDoF+B5hVUHDg5Obw/hNQc6irqo7AzcnQlhjsJuhJ4NUmMPItc6bMR2fBX5Ac7micy0f3EQ3NzMjhOcR+pnqeN9ZXq6wCiwzscrNYSQp1q7ANYQF+O4s8hNDAW6ye5zLBg0Zrp0LnOxcy5VrNePAxMUwY9e/QViVEFMsdxb5kKpqtv3RvGYkEyF8I/AzmjOPLoT5uXmxQaaI1PhrwMeda4Vw7R5gnqrKREeXGJyvmBCu8hQr99EK4Mf2XsmBVDFmrwGuTYTQ64P5uvlnCNtYQT5LJ2PczjEhdK4Vw7WrbYKyWpkAqaK7+DzwDxacEb+nuaJq9/XKPFJkc5Z1Vf0Lcy0buxDmjrjZwQ0istAGH+0xbpFrnwE+6VwrjGsN4Ip42ysTDM6RwJl4rakoUgHcIiJze02RLc1CVdcHriZsiutCWFyKfHHy33kI4fsIzdTOteK4druI3BtNQ6WD4ES7vhvwnYRQbteLIdZ3e02Rk3pTg9D7+Wqa9SZHfoh1p4eB6+2+13uIW+TaG4CZzrXCuTYz5VplvDQrvOnGwGWEKX3x4BRCqgrwOPCjXklFs950CmHT3FXuLgqLG8BMEVlu972rFNlirqq6oXFtLedaIYi79yyw+7zaKY7nPmKqdiHwcprbNznyJ5UAF4nIcz2SKgrhfsA/eZpVKKmqhF2tL8qIY7cDWIOweGEb51qhKbIA3xeRRVaW0DHFMCHVcYT97JxUxZJqCfAtcwhdkSpxF+sTGuFjjN1dFEeqi60NqtptjTfh2jHAe5xrhbvCZcDXs1yrjJEeN+x8kvOS2oijOFJdICKPJ268G8S/e647+Ukh1XLgnDgIdSmEkWtbAV+l3CfMlYFrFXOFD2e51u6mx80Bvk7YyaTMp16VgVTPAOf2SKq45nhvwsYL3lRdPKkuEpE/9TiARa59jdADqi6GhXLteeCLrbhWGYNUBxM2ZvV2jOJJdbaIPEmzbtRtelwFvuG3dVJItQg4M6cB7EDgb5xrk8K180Tkz60GsEobUo0AX3ZHWChi6WEucL6lS93OIEcRPYZw+I+30RRPqtNtAKv0OIDVjGuO4rn2sJU1Wu41WWlDqqOBXbx+UXiABPiotWV0tW9hbMOx09BO9zSrcCGsEbbp+qY58W7T48i1Iwh9oO4Ki+faJ6xboyXXKi1ItTbwOXeFhSLOFs4UkeuTbdy7JZUSTh98qQ9ghabHMXbHx3j1OICtBZziXJsUrl0qIleNxbVKC1L9LaHPyUlV3ChVAx4CTmxn2SdIqnUI68WdVMW6wqqlx7Pi3pA9DmDvAbZzrhWeHj8GfCQuImn3y2kA6mb7T2KSD78eMncRz7A9WkSe7TY9bkGqrZ1UhafHNxJmImv0tkKoYcT8B+da4VwT4BgRWWBca4wphslOG28inLmqXr8o1LJ/SkRu6tFdRFIJYTs1J1Wx7uJx4Mj4WY8rhBrAPsDrnGuFc+00EbmhE65lXcQHE0V15Iu4DdPFIvLlXndDTki1K7Cbk6owd6FGrMNzaIpPcXwito78hXAEuEJEvtCpk6/Y6Wt1Vd0COAQ/d7XI4NwEHGfliF43AI21waOdVIUJYawTHiciN/fq5BOubQq8NZY6/FYX4gj/Fzgqtqx14uQrSTAOBdanuTzMkW9wZgOHichKwnnF2iOpRm3i5B1tXL6jdyGsAZ8RkR/kdK5J5NpbgenOtcK4Nhd4u4gsg85n/NPZlXfhdacig3OQ7YScR5oVhW8P4GX4xElRQnimiJyd1wFPLbjmfMufaw8Dfy0iT05084y4LfwmwN42Sjmp8g3OA8Bbet3ZpE2KfChe481bCGPr0z+LyKl5nnRnXNuIMHni5aj8uTbPuDavm97d1GFs4LY9N8TNVO8A9heRR3psrM6ibrPIb/YBLDc0klT2syJySg4tNK24tjuwEc22D0c+XJsNvElEHuyWazFA+2VsvKN7ZxEnS64B3iwij+cphJZmK/AXwM4Zp+jocnAxLtSB94vIWdER9nq4Uws3v39GfB29c+0XwH69mo4ohjOcVLkQSmyU+jpwqIg8Gw+byfHfiTHbjXAMg7v53lOsuErhQBGZmWONsJXz3MO5livXvs0L6/Fdc61i55vslCGaY+IjVBV4DjhWRD4BiNWJinIAu7mb75lQSnNlyR4i8ssihDA+B6o6nbABinOtd64tA04QkRMIZaOeJyYrJoSb+mjV8wh1qxHqe9ZHqDmmWK0cxms9Zj0TqkHY6ectSYo1WsC/GWO0HeHsal9D3hvXbgf2EpFvG9fIw3RUgFfaP1L3+z0hQWokI9SpwL4iMjs25hYhhInDGAG2dTHsSgRTQu0rImfYvc27nNGqtLFjQmxH51yLze8rCYec7S0id+bNtVqSIjs6C0y67O0nhJnH2QmhRgv89+OuypsBL3Ex7FgE48BVAxYCZwHni8iqJC2ejHLDDh6Orrn2M+PanUVxrZY4DMfYZEpbWH5HaMi9ygITZx6LniGMwrclsI6nWx2595oRajnwXcIRC49M0uCVxSs8LBPm2l2Ens/LI9cIy+ty51qNsCGoO4zxyYSlVucDl1i6WrF6xegkf7cXJ9/RG3fXJBN2X+IBQD80J3hf0YQa41mKg5hzrTOuzSIckvVDW3paONdq+ORJlkhxhrFir5XAdYSjPH+6+pfzbaKeqDPcLPnOwx6z1E1UEzLNMxGcKSJ/jDEjbL81OgXfE2AT59qYXFsF3ABcAFwdB6vJ4lqNsPJk2AKR1iRIgpG6rFnAj4DLReQPWRGcAiFMsfEQC58m5YFqJqVaRGjAvRS4VkSeT0RQpyJmNukVTy5cf0i5ljr2Vly7x7h2WXTvmcFrUuJWI3Rwj5b4Zrc7qjHOHqapZCUZlbPp5UITwF8AP4uFWgtKJTj0KRfBiHXt2soYt/id293Huv1OPXFRMW7SIsZzgVsIBfZf2Yl1JOlwo09iNi3hWhk31uiFa9klo4sItcBfWNzuiDPCkWtTEbcasN4AjEAjbR6+VoeorwIWAH8G5lhQ7gDuFZH5mVE9kqnflk5tbNdWxkPi43ee3ubnG7a5tiXAk5b+/t4GrlnAA2naG/vOpigdHu8Z3bKkMRuPayNjcG0h8H+EDUvuNq7dIyJP9xvXasDHB0AM/5SkvhG/Bz5G6ANcCjxjIvg08LQdGZhNaaKFb4hIv5Epvb7L7ZrL6DDid34gc03x/cuW5j5PWNGzEJhvcZvfKiYZAeyrHr6kB24F8GFCF8CgcW2OcW25xW1xhmtLxuKalTCmnGtDW8i1XV8qifVvFLRixJFv3CrJABCJ5HFzrvUuhmZPy441utAtANVMXSO+l5pAGUEo7WW0cnHm8iQTt9UboZY8bs41h8PhcPQ3hskZDpJ7GhZnqBl36M6wD7k2MGLo44GjxCUCrxk6cnWGxw+AoP+3iDxtbhBrct2K5hkhZb2uJdjSvygEtgxwBmELrzJuHa8mZnNF5MbkmmJz8sGEJaJLac4mx5nJBa1aLzKzyX0Zb1WdBvwtzTXlpefaoA1CoqqDcEF7iMhtyd5mdVU9CLi25Ne1AHiJ7a4iQNXWaX4VOLHk13aliLwzbnIRV/ao6q9oHkORYjHwBKHPcDahx/BOE9V6vwpjIvIbAk/Ruk+vlFzrtzamXlGjvKtPossQQnNnFispb7d//M5PtInPQporUMpWh4rf+dk2P19McwVKjebqhen22hE4yH63DsxR1VsI68d/kzbz9lnTvBL6JTejnLsNjcW1gRHDMhd1Y4CkjaWvlVwMV0Z3Y+4i/nxpEreyrkJpN7lVTUSwmsQ5vmfXJu9srw8AC1T158AlwPUisjRxi9oHohj5VmYxHNh5Bj+HoX8fPKJ7itsXJVg0ZPdDEodYTcQ0bgAQneQmwHsJi/7vUdXTVfXltqa8oarVWFd2OFwMyyWGTydikH7+VObzYUUUyFQc6yaQ2wKnmSh+S1V3ilvED0iLi8PFcKjwaBvRe8Lj11Yc46au0TGuD5wAzFLVr6vqVnEdbAvH7XAxdPQp5rVxjI8TNqBot6WSo+kY4/ZS6xA2E7hLVU+y2dCGu0SHi2H/OxyABzMimKbJT2Q+c7S/l6kobgqcB9ysqjOsrUfcJTr8Aeg/xBPB6oStkVYLntW7KiKyqoVQOiYmirubIJ4iIhonWPw2uRg6+ksMIdQLH2kheDFmd7sY9iSK8Szef1LV662WWPe02cXQ0X9ieK+IrLDaVivBuz2TUjsmhugCR4EDgNtUdV9Lm10QXQwdfSSGt7QRu9g4/DvCaoCqu8OeXeIoYT30z1X1aBdEF0NHf8XkN63S4LipAWGm+X5PlXNBXKlUA76vqidHQfQmbRdDx9QgLsN7lLARQeoEX5DiWep8Iy88htHROxfqwLmqerr1I/qkiouhY4rEUIEbRWTZGPXC+NlPWPMYRkdvaXPF0ubToiB6yuxi6JgaMgpwRfLf7UQT4FbCMYwVd4e5xqCaCOLJLoguho7JRewvfJJwuHZM2dZkq62vFZFlwFVjpNOO3gXxXFU9wgXRxdAxeYjCd4WIPGdip+OIJ8APPJaFCmIdmKmqe8ZNaP3WuBg6io+FAt/JiB1t3GHdlpDdTmizkXZO0tFz2WIE+C9V3QJo+NI9F0NHsa5QCDs1z7Ild50IW8Xc4zfx5usiOVIHtgQutvtd8ZYbF0NHsS7kKxOMS91IeRnwZ3wipSjE+uFbVPWz3nIzmPCCcH+4wgpwF3CNucKOzqVJJlKW2iFR5yX/P0f+glgHvqCq14rIXYN4KFI3sAG59M+ci2H/uMIzrA44UccR3eGFwD9aOtfABbGIGEXOXKCqe0QhGPZzm+36Sz8ouBhOvSusEvoFr5pArbCVO3xOVc8ALvBUufB0eTfg70XkX2zwGkp3mByDujGwF+U86Go1F10M+wMnx70Kuw2k/d2ZwEeA1yRC68hfEBvAGap6GTDfBrFhHIDi5NKrgB8PwsU4pgaxCP9dEfltL/UnS1PEao2f8FtbeLrcADYGPm8iKP4sUyfsolQv6es5F8OpQazpPQl8ylxdT3WnWG8UkV8T6ocxpXMU5w6PV9VX4L2HsUG91C8Xw6kVww+LyAJzdXmkWZGUnyTskh1J6yjGHa4NfDI6c78tniY7Jp5S1IDviMh/2+RHLgX4JF1eDByTkNb3OyzGHSpwlKpumawIcrgYOjpA3YRwNvDxImYi4zkeIvJL4HSaOzk78neHdWA94APOJxdDx8RSYwGWAIeLyFJAC+pRi4J4BmHPwxEXxEL5c6yqrk2z59PhYuhog7gbdQU4QkTuj4eYF2JZrAnW0rYjgN/TPBHOkS9/6sDLgbfEdct+W1wMHe2FMKbHHxWRq/OsE44jiIjIs8DbCIfOD22DcMHxVeAovxUuho5xUlYTwtNE5JsmhJOSssaD0UVkHnAI8IwLYu6oEsofB6jqRlaz9VTZxdCRcQxx5vhLIvKFyRTCRBBj/fBOE8RnXRDzvcV2LzcC9k8E0uFi6KBZI6wRNmD4nG0ZPyUCFLesF5HfAgcC8/Gm7CJS5UP8VrgYOl6YFseO/BNF5PQohFO5u0kiiP9jDmYe3naTJ48E2Gcq3L/DxbAfEdcbPw+8R0S+FsnRD9s8JYI4G9gbuCURRG/M7p1H2wLbAXgDtovhMKdJsT54P7CPiFzejy4hHmokIo8BfwVcZN/bz1DpPSOoAm9wbrkYDrMbFBOU/wD2FJE7+zldikvHRGSFiHwQ+CDwHM06orvE7gZEgF39VrgYDhsaNCdJ5gPHisiRIvKMOa++rhtZ243Yd70I2B34deISve41wVtq769Kng+Hi+HAi2A8Z6QCXALsKiLfU9Wq7f5binRTRDRpvfk9YWLlJGCRieJAbOc+yWK4jd3PhvcbuhgOgwhWgVnAoSLyPhF5OG7OWsbzMKyOWLE/nw+8Hvie/biaiKKnz+OL4RbApn47XAwHDVEEGokI3k+osc0QkZ+aG6yU/ZQ0EWkk56k8JCLHAnsCV9FsFYrps6eA7cXwRSaI6WcOF8NSC2DaL1gBfgccB7xeRC5KZmXrg3T+RXSJdm23ichhhMN+LgGWW/ocz2d2YVwzewDY3MWwfPADoZqrRZQXbl8OsBi4lnDQ0g0xBbZ9CBuDemZuFPckdb4VuFVVdwSOBA4HdkgGU00Gj/Q1jM8SwCYuhuUUQx2Ah288oUv/O/071UQAIxYRju68ErhWRB5d/ZcHXATHEUURkQeAU1X1TGA/4J3AAYRm4+zAmtYYJXlvtIgDLWKkJXw2Yzll/Q6ubRC5piXWE62VfPSSMUbg6E7Gc78LgQeA2witJbeJyJMZAcTS4aGcWc2IYkVEVgDXA9er6lrA64B9Cata/hJ4Ge03K5g2TlYy0mHc+hEj9r7BGNdeVtfcCdfKvEHFtBrwdMmdoRCOKMxipV3bcvvzEmAB8DjwEDDXRPBBO5SJRABj28zQCuAYohhbRmIKvcIGktuAc2zH51dYGr2DucaXApsB000QXkTYTqwVFljcynjuc1yFtKLNs/qEPatlPECqE641KO88xHJR1Q0GgKfPZ0XLNkdY14K3aqwmaCN3bCFplLE9ZsoY0hRGIRxjUB/nd6fZa1RElrX4nXUpfy17uYisbHHt61H+OmIrrlVtgCv1oyxDRtxKZuRy8StGHLOTKH6fHf2f+QxCl3w7kqXX5kTsG6EcM27D8jz6tfUfagzArryq2nLlhwtg34hfq3abdkv9KmVPJVW10ab3dCC5lpSZyi30TllHzulxLEM0BqkZ3TEcafLHBuA6LhWRp2yTBHeDkyeAsQbbcuJEVacR1ulubu8bEQrt6wFzROR6W8rYiLFT1bcRjt4s44xrnE29RURmxWuze7EW4QS9dQaFazH7UtWXAO8uacwiRkVVB0E89hCR2+LyOJepwh1gFMBG8vlawM6ETR5eD+xiorY5rWcarxKRw+K+jzF2qvprQs9imXGqiJyZHvdgXRtP0+yzLD3XTAzrqrof8KuyP9tlPwNjrN4nR/4uMG5PVrfPXkrY9usgYA9Cf+FYrkktVjXCUsdWeMaeyTL3GS5s8bNVhB7XrShnP95YXFtFc516WfsMl9Uod09XDJDXPidHBFHVDYFDgfcSluSt30IQYM11yuk65rEm7qo0N5gtY1G+Bixt8fnKZCAosxi2W4FS1utaHTffqMHRqQjuQti1573mbiLiGuRYPxzmZ0oSd4uVEjRu+KuqS/zJ6u9RzOFIRVCA1ccWqOobCLtfvxtYKxFAaO7x6GjeD1hziavYgDE/cVkOF0NHHwthnIAaVdUdgM8RtuyqJilw1QVwzDSyDjyVEb24/+NjLoYuho7+d4MVS+XWBT4F/COhBSY6wYo/Lx1hEfBkG9F7yG+Pi6Gjf4Uw9sLVVfUA4KvAKxMRdCc4MWf4fyLybJue1zl+m/oXvu2/p8UNVZ2mql8h7FH4SppnJ7sIdo7Yc/lAC25lf+b31Z2ho4+EMDY770Q4CW9GQlp/LrrHXfaeXYcN8CBhv8ZNKPdqDXeGjoETwrcTjjiYYW6w4s9Ez1y6PSOAcclaRUQWA/dl3KLDxdAxBSIolhqPquqJhGNANyLUBt0N9nBrjUvPAne3EbvItd9mxdLhYuiYZCGkOWN8FmGipGEvr2H1hih8d4rIfHOB2kIwobmG17nnYuiYYiH8F+DTlhaLPwO5OUOAG8bgVRTM2wjtNxV3hy6GjskXwmoihB+huUbWC/j5IJ6fc027FNjqhlURWQTcRPvNbR0uho6iiGo1wrMSIRzx25JriiyEiZF74jrkNr8bB58r8A1GXAwdk+oKa8lkyaddCAsTQ4DLTQTHqr9GkbyGsIVZ1VNlF0NH8UIYHeGhhMmSuNeeI/8UeRXww4w4MkaqPB/4SUYgHS6GjgKEME6WbA9cTHOfOU/L8kUUshtFZE66zX8HuNA56GLoKFYIhXC2zTTgEmA6zT44R/4Q4BvJn8f+5TBIVQiTKLNo7nTjcDF05J22We3qbMJZJHHbLUf+rrACzAauG2fiZA3emYM8z926i6GjGFcY64T7Aye6EE6KKzy7g4mTNYTUHPzlwFya+x06XAwdOaXHqqrrABckqbE7j+Jc4X3ApZb2dpzq2uqUqoisAM6kuRO2w8XQkUcsLfX6HLBdQlhHca7w8yKyKujbhM/rjrXDHwL3mLP02qGLoaNHV1gBGqq6DWGHal9vXKwrrAK/FJEruz2r28RT7KyZk/22uhg6cnIpRq4zgXVoropw5Dzu2Pso8IkcglY3Mb2BUD90d+hi6OjBFVbNFb6WcIxnA2+uLtoVni0i93brCtcMoQphwusZG8R8MsXF0NGlw1Dg8/isZNFCWCPU974QB6EcYtcg1HsfNUH0GLoYOrqwFHGlyU7AYZbGuSssLj1eCRwtIiuxA+JzGszqto78+8BlFsNRv+0uho6Jx+8jRiCvNxWD2K95kojcbcKVt3uLs8vHA3+0eLpDdDF0dOAKxRqsNwTeZx/7DHL+iDv9zBSRf407AeX9jySzy4uBw4HlGVfqcDF0tEEUvsMIp63V8RnkIhzhCHAz8CGrExbmvpN0eRZwrPGz7oLoYugYGzGFOtLJUgjihMkc4F3WXJ1bnXAMQRw1QbyEsAellz9cDB1jpMgVO/x9a2Av/CyTIoSwCjwKHCwiT1sbzaTU8BJBPAc4xwRxlYfFxdDRPm4HAWvTPNzJkU9qXAUeBw4QkT/l1E84YUE2Qfw0cL6l66OeBbgYOjLm0N4P9luRuxDWgIeAN4vI/VMkhHFCJa5QOQk4l+YMswuii6Ej7punqi8C9rCPfRY5PyG8G9hPRP4wVUKYEcSGfY9PAZ+1WPsqFRdDRxKzVwNbmEvwFLk3lx0nS34KvElEHplqIWwhiDUROQs4itB2U8Ebs10MhxxR+N5o7z7T2D1iO1IVOEdEDhWRZ+LKnr4JuIgmkyoXA28CHqS5UsXTZhfDocaufgt6doNV4CngPSLyaVWtWBmiL1PQRBD/B9gd+C8TRD9HxcVwaN0MwC4ew65EcDRxgz8G3igil8cldkX3EeYkiFURWSAihwMfAhbR3P7La4kuhkPA5OBaVFU3ALbOpM2OzlLiGvAY8H4ReYeIPBzPjinLhdgEmlg6f4FlCVeYIFZcFF0MhwFR+F5MWILn6MwJYkKxAvga8DoRmWlpcV/VBycgiGqN9zUR+ZOIvJuwNPNuF0UXw2ESw5fQ3PfOneGaaCTpcJxk+HdgVxE5UUSeiitK+rU+OMG0OYr6VYSJtRMIywiryXPia5xdDAfWGeIPd0sBjKcC1oDFwIUmgkeLyGxVrU7wjOMyCGLDXGJVRFaKyLeB1wEfJBxUX6HZn1h3YWwN3wi0nNhkyMVQM6+aET4O7ncTTp37TxH5M6w+HkEHSQRbiGI8j7kiIkuBi1T1u8CBwDGE5ZvTk78SRTGubR/qLMPFsJyYPmSClwp/JG2WuPcB1wE/Am6N6e8wiGBGEOMyviiKdbsv16nqVsAhhNrinsCGbRy2JpnI0Ahk2cVwWEeydUtc5qiMEzvJPJutfm8p8DBwF2GvwZuB2Wn9T1VrQH1YRHA8UbTPHrWywYWqujkwA9jH3nckrGiq5BDbMqJSA5aV3D0M6zrNZTTX05YJ8TuvaPPzFSZ2S+0aFwFPmPjNBe4HHgDmZdthTAAVaJSpVWYyRNHuTywlNETkKeBqe6GqmwLbAzubMG4DbAVsBmxA2B1ppA3XGharRokFcfn/A86uA0YzVG8CAAAAAElFTkSuQmCC" alt="FSG" class="logo-img">
+    </div>
+
+    <h1 class="hq-title">Growth HQ</h1>
+
+    <p class="hero-why">
+      Facility leaders are stuck juggling too many vendors — blown schedules, dark sites, budgets that bleed, and nobody accountable. <strong>FSG is the one partner who self-performs every solution — nationwide, performance-based, proven.</strong> We don't sell FSG. We find the problem, bring the plan, and make our client the hero.
+    </p>
+
+    <div class="hero-motto">Protect. Land. Expand. · Humble, Hungry, Always Grinding</div>
+  </div>
+</section>
+
+<!-- ============ SEARCH + TAGS ============ -->
+<div class="search-bar">
+  <div class="search-inner">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search" placeholder="Search decks, verticals, playbooks…" aria-label="Search">
+    </div>
+    <div class="tag-row" id="tagRow">
+      <span class="tag-chip active" data-filter="all">All</span>
+      <span class="tag-chip" data-filter="plays">The Plays</span>
+      <span class="tag-chip" data-filter="story">The Story</span>
+      <span class="tag-chip" data-filter="proof">The Proof</span>
+      <span class="tag-chip" data-filter="how">How We Sell</span>
+      <span class="tag-chip" data-filter="tools">Tools</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ WHAT'S NEW ============ -->
+  <section class="section" id="whats-new">
+    <div class="section-kicker">Fresh off the press</div>
+    <h2 class="section-title">What's New</h2>
+    <hr class="section-rule">
+    <div class="grid">
+
+      <a href="plays/lighting-design-playbook.html" class="card" data-section="plays" data-tags="lighting design owner supplied playbook ebv storybrand">
+        <div class="card-top"><span class="pill new">New</span><span class="card-date">Aug 2026</span></div>
+        <h3>FSG Lighting Design Playbook</h3>
+        <p>The owner-supplied lighting program. EBV®, the $14→$9 story, and the drawings-first CTA.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="story/master-2026.html" class="card" data-section="story" data-tags="master overview corporate 2026">
+        <div class="card-top"><span class="pill new">Updated</span><span class="card-date">Aug 2026</span></div>
+        <h3>FSG Master Presentation 2026</h3>
+        <p>The flagship story. Who we are, what we solve, and why clients win with FSG.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ WHAT #3 — BUSINESS DEVELOPMENT (The Plays) ============ -->
+  <section class="section" id="business-development">
+    <div class="section-kicker">Top of Funnel · Program-Level Plays</div>
+    <h2 class="section-title">Business Development — The Plays</h2>
+    <p class="section-sub">Vertical playbooks with scripts and resources. Our business lines and products solve problems for all facility types — these plays show you how to open the door in each one.</p>
+    <hr class="section-rule">
+    <div class="grid">
+
+      <a href="plays/lighting-design-playbook.html" class="card" data-section="plays" data-tags="lighting design playbook owner supplied ebv program">
+        <div class="card-top"><span class="pill">Program Play</span><span class="card-date">Aug 2026</span></div>
+        <h3>FSG Lighting Design Playbook</h3>
+        <p>Owner-supplied lighting: the story, the GC/EC flip, the drawings CTA, and the EBV® standard.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="plays/c-store.html" class="card" data-section="plays" data-tags="c-store convenience fuel vertical playbook scripts">
+        <div class="card-top"><span class="pill">Vertical</span><span class="card-date">2026</span></div>
+        <h3>C-Store Playbook</h3>
+        <p>Convenience &amp; fuel: image programs, rebrand cycles, who buys, and the scripts that land meetings.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="plays/retail.html" class="card" data-section="plays" data-tags="retail vertical playbook multi-site rollout">
+        <div class="card-top"><span class="pill">Vertical</span><span class="card-date">2026</span></div>
+        <h3>Retail Playbook</h3>
+        <p>Multi-site rollouts, refresh cycles, and the national-execution story that wins retail.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="plays/commercial.html" class="card" data-section="plays" data-tags="commercial office vertical playbook interiors">
+        <div class="card-top"><span class="pill">Vertical</span><span class="card-date">2026</span></div>
+        <h3>Commercial Playbook</h3>
+        <p>Corporate interiors and owner's reps: design-first conversations that bypass the bid trap.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="plays/data-centers.html" class="card" data-section="plays" data-tags="data centers vertical playbook critical power mission critical">
+        <div class="card-top"><span class="pill">Vertical</span><span class="card-date">2026</span></div>
+        <h3>Data Center Playbook</h3>
+        <p>Mission-critical power and lighting: the credibility bar, the buyers, and the entry points.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ WHAT #1 — ENTERPRISE SALE (The Story) ============ -->
+  <section class="section" id="enterprise-sale">
+    <div class="section-kicker">Early Stage · Why FSG</div>
+    <h2 class="section-title">Enterprise — The Story</h2>
+    <p class="section-sub">Who FSG is, the business lines and products we bring, why we exist, what we sell, and how we sell it. Start every new relationship here.</p>
+    <hr class="section-rule">
+    <div class="grid">
+
+      <a href="story/master-2026.html" class="card" data-section="story" data-tags="master overview corporate story fsg 2026 why">
+        <div class="card-top"><span class="pill">Flagship</span><span class="card-date">Aug 2026</span></div>
+        <h3>FSG Master Presentation</h3>
+        <p>The complete FSG story — 43 years, 41 markets, every business line.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="story/business-lines.html" class="card" data-section="story" data-tags="business lines electric lighting signs solar technology smart buildings ev charging">
+        <div class="card-top"><span class="pill">Overview</span><span class="card-date">2026</span></div>
+        <h3>Business Lines &amp; Products</h3>
+        <p>Electric, Lighting, Signs, Solar, Technology, Smart Buildings, EV — problems we solve for every facility type.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="story/why-fsg.html" class="card" data-section="story" data-tags="why fsg storybrand 4mat value">
+        <div class="card-top"><span class="pill">The Why</span><span class="card-date">2026</span></div>
+        <h3>Why FSG — The 4-MAT Story</h3>
+        <p>The villain, the guide, the plan, the win. Our StoryBrand narrative for first meetings.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ WHAT #2 — ENTERPRISE ACCOUNTS (The Proof) ============ -->
+  <section class="section" id="enterprise-accounts">
+    <div class="section-kicker">Mid Stage · Show, Don't Tell</div>
+    <h2 class="section-title">Enterprise Accounts — The Proof</h2>
+    <p class="section-sub">Executed solutions for named accounts. Real numbers, real timelines, real logos. Proof beats promises.</p>
+    <hr class="section-rule">
+    <div class="grid">
+
+      <a href="proof/sunoco.html" class="card" data-section="proof" data-tags="sunoco image branding rebrand convenience c-store fuel">
+        <div class="card-top"><span class="pill">Confidential</span><span class="card-date">2026</span></div>
+        <h3>Sunoco — Image Branding</h3>
+        <p>National image rebrand execution across the convenience footprint.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="proof/us-bank.html" class="card" data-section="proof" data-tags="us bank jll led retrofit financial banking 214 locations">
+        <div class="card-top"><span class="pill">Proof Point</span><span class="card-date">2026</span></div>
+        <h3>JLL / U.S. Bank — LED Retrofit</h3>
+        <p>214 locations across CA, CO, OR. The banking proof point that opens financial doors.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="proof/crash-champions.html" class="card" data-section="proof" data-tags="crash champions emergency lighting collision auto national program">
+        <div class="card-top"><span class="pill">Program</span><span class="card-date">2026</span></div>
+        <h3>Crash Champions — Emergency Lighting</h3>
+        <p>National program on SOP: 45-minute fixture standard, clean scopes, executed at scale.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="proof/mmc-case-study.html" class="card" data-section="proof" data-tags="mmc sto lighting owner supplied 9m savings case study">
+        <div class="card-top"><span class="pill new">Build Me</span><span class="card-date">Pending</span></div>
+        <h3>MMC Case Study — $9M Saved</h3>
+        <p>$14→$9/sqft across 1.8M sqft. Every timeline met. The flagship case study.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ HOW — SALES METHODOLOGY ============ -->
+  <section class="section" id="methodology">
+    <div class="section-kicker">The FSG Way</div>
+    <h2 class="section-title">Sales Methodology — How We Sell</h2>
+    <hr class="section-rule">
+
+    <div class="how-box">
+      <h3>Client First Hustle Culture</h3>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-num">1</div>
+          <p><strong>Ask leading questions.</strong> Discover the specific problem we can solve — don't pitch until you've found it.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          <p><strong>Know the complete value chain.</strong> Design, product, delivery, install, warranty — we win because we see the whole board.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          <p><strong>Don't sell FSG.</strong> Make the client the hero. We're the guide with the plan.</p>
+        </div>
+        <div class="how-step">
+          <div class="how-num">4</div>
+          <p><strong>Protect. Land. Expand.</strong> Defend the base, win the beachhead, grow the account.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <a href="how/methodology.html" class="card" data-section="how" data-tags="methodology protect land expand done doing next process">
+        <div class="card-top"><span class="pill internal">Internal</span><span class="card-date">2026</span></div>
+        <h3>Protect / Land / Expand</h3>
+        <p>The full framework plus Done / Doing / Next pipeline reviews.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="how/discovery.html" class="card" data-section="how" data-tags="discovery questions qualification first meeting">
+        <div class="card-top"><span class="pill internal">Internal</span><span class="card-date">2026</span></div>
+        <h3>Discovery Question Bank</h3>
+        <p>The leading questions that surface the problem — by vertical and by buyer.</p>
+        <span class="card-cta">Open</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ WHAT #5 — SALES TOOLS & DEAL SUPPORT ============ -->
+  <section class="section" id="tools">
+    <div class="section-kicker">In-Deal Support · Training · Resources</div>
+    <h2 class="section-title">Sales Tools &amp; Deal Support</h2>
+    <p class="section-sub">Battle cards, calculators, templates, training, and FSG App FAQs. What you need in the 30 seconds before you answer the hard question.</p>
+    <hr class="section-rule">
+    <div class="grid">
+
+      <a href="tools/gc-ec-battle-card.html" class="card" data-section="tools" data-tags="gc ec battle card objection general contractor electrical contractor owner supplied">
+        <div class="card-top"><span class="pill new">Build Me</span><span class="card-date">Pending</span></div>
+        <h3>GC/EC Battle Card</h3>
+        <p>Flip the biggest deal-killer into an advocate: their margin stays, their risk drops.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="tools/roi-calculator.html" class="card" data-section="tools" data-tags="roi calculator lighting cost per square foot 14 9 savings">
+        <div class="card-top"><span class="pill new">Build Me</span><span class="card-date">Pending</span></div>
+        <h3>Lighting ROI Calculator</h3>
+        <p>Their sqft × $5 = what the old way costs them. Turn the stat into their number, live in the meeting.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="tools/templates.html" class="card" data-section="tools" data-tags="templates loi msa nda contract proposal boilerplate">
+        <div class="card-top"><span class="pill internal">Internal</span><span class="card-date">2026</span></div>
+        <h3>Contract &amp; Proposal Templates</h3>
+        <p>LOI (BL Mosher model), MSA, NDA, scope boilerplate, pricing sheets.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="tools/fsg-app-faq.html" class="card" data-section="tools" data-tags="fsg app faq training how to engage crm">
+        <div class="card-top"><span class="pill internal">Internal</span><span class="card-date">2026</span></div>
+        <h3>FSG App FAQs</h3>
+        <p>Engage CRM, quoting tools, and field apps — answers to the questions the team actually asks.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+      <a href="tools/training.html" class="card" data-section="tools" data-tags="training development onboarding enablement">
+        <div class="card-top"><span class="pill internal">Internal</span><span class="card-date">2026</span></div>
+        <h3>Training &amp; Development</h3>
+        <p>Onboarding paths, product deep-dives, and skills development for the team.</p>
+        <span class="card-cta">Open</span>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="empty-state" id="emptyState">
+    Nothing matches. Try a client name, vertical, or "playbook."
+  </div>
+
+  <!-- ============ WHAT IF — The Close ============ -->
+  <section class="section">
+    <div class="close-cta">
+      <h2>Let's Go! 🔥</h2>
+      <p>Every deal in this HQ starts the same way: find the problem, bring the plan, make the client the hero. Missing a deck or need a new play built?</p>
+      <button class="cta-btn" id="openIntake" type="button">Request a Deck</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="grind">Humble · Hungry · Always Grinding</div>
+</footer>
+
+
+<!-- ============ INTAKE MODAL ============ -->
+<div class="modal-overlay" id="intakeOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="intakeTitle">
+    <button class="modal-close" id="closeIntake" aria-label="Close">&times;</button>
+
+    <div id="intakeFormWrap">
+      <h3 id="intakeTitle">Request a Deck</h3>
+      <p class="modal-sub">Tell us the story. The clearer the problem, the faster we build the play.</p>
+
+      <div class="field">
+        <label for="reqName">Name</label>
+        <input type="text" id="reqName" autocomplete="name" placeholder="Your name">
+      </div>
+
+      <div class="field">
+        <label for="reqEmail">Email</label>
+        <input type="email" id="reqEmail" autocomplete="email" placeholder="you@fsgi.com">
+      </div>
+
+      <div class="field">
+        <label for="reqHero">Who's the hero?</label>
+        <span class="hint">The client — who are they and what facility type?</span>
+        <input type="text" id="reqHero" placeholder="e.g., Regional C-store chain, 80 sites, TX/OK">
+      </div>
+
+      <div class="field">
+        <label for="reqVillain">What's the villain?</label>
+        <span class="hint">The pain — what problem is blocking them or blocking the deal?</span>
+        <textarea id="reqVillain" placeholder="e.g., Their GC pushes back on owner-supplied lighting; no battle card to counter it"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="reqPlan">What's our play?</label>
+        <span class="hint">The solution or product you think fits — or say "not sure, help me find it"</span>
+        <input type="text" id="reqPlan" placeholder="e.g., Lighting Design Program / EBV® / not sure">
+      </div>
+
+      <button class="modal-submit" id="sendIntake" type="button">Send It 🔥</button>
+    </div>
+
+    <div class="modal-confirm" id="intakeConfirm">
+      <div class="flame">🔥</div>
+      <h4>We're All Over This</h4>
+      <p>Your email is opening now with the request pre-filled — you're CC'd so you have a copy. Hit send and we're on it.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const search = document.getElementById('search');
+  const cards = document.querySelectorAll('.card');
+  const sections = document.querySelectorAll('.section');
+  const emptyState = document.getElementById('emptyState');
+  const chips = document.querySelectorAll('.tag-chip');
+  let activeFilter = 'all';
+
+  function applyFilters() {
+    const q = search.value.toLowerCase().trim();
+    let anyVisible = false;
+
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || '').toLowerCase();
+      const section = card.dataset.section || '';
+      const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
+      const desc = (card.querySelector('p')?.textContent || '').toLowerCase();
+
+      const matchesSearch = !q || tags.includes(q) || title.includes(q) || desc.includes(q);
+      const matchesFilter = activeFilter === 'all' || section === activeFilter;
+
+      const show = matchesSearch && matchesFilter;
+      card.style.display = show ? 'flex' : 'none';
+      if (show) anyVisible = true;
+    });
+
+    sections.forEach(sec => {
+      const secCards = sec.querySelectorAll('.card');
+      if (secCards.length === 0) return; // methodology how-box & CTA sections stay
+      let hasVisible = false;
+      secCards.forEach(c => { if (c.style.display !== 'none') hasVisible = true; });
+      sec.style.display = hasVisible ? 'block' : 'none';
+    });
+
+    emptyState.style.display = anyVisible ? 'none' : 'block';
+  }
+
+  search.addEventListener('input', applyFilters);
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeFilter = chip.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  // ---------- Intake modal ----------
+  const overlay = document.getElementById('intakeOverlay');
+  const openBtn = document.getElementById('openIntake');
+  const closeBtn = document.getElementById('closeIntake');
+  const sendBtn = document.getElementById('sendIntake');
+  const formWrap = document.getElementById('intakeFormWrap');
+  const confirmWrap = document.getElementById('intakeConfirm');
+
+  openBtn.addEventListener('click', () => {
+    overlay.classList.add('open');
+    formWrap.style.display = 'block';
+    confirmWrap.style.display = 'none';
+  });
+
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+
+  sendBtn.addEventListener('click', () => {
+    const name = document.getElementById('reqName').value.trim();
+    const email = document.getElementById('reqEmail').value.trim();
+    const hero = document.getElementById('reqHero').value.trim();
+    const villain = document.getElementById('reqVillain').value.trim();
+    const plan = document.getElementById('reqPlan').value.trim();
+
+    if (!name || !email || !villain) {
+      alert('Name, email, and the villain (the problem) are required.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Growth HQ Deck Request — ' + name);
+    const body = encodeURIComponent(
+      'Bobby,\n\n' +
+      'I need a deck built. Here\u2019s the story:\n\n' +
+      '============================\n' +
+      'THE HERO \u2014 who\u2019s the client?\n' +
+      '============================\n' +
+      (hero || '[Client name, facility type, # of sites, region]') + '\n\n' +
+      '============================\n' +
+      'THE VILLAIN \u2014 what\u2019s the pain?\n' +
+      '============================\n' +
+      (villain || '[What problem is costing them money, time, or sleep? What\u2019s blocking the deal?]') + '\n\n' +
+      '============================\n' +
+      'THE PLAY \u2014 what\u2019s our solution?\n' +
+      '============================\n' +
+      (plan || '[Business line / product / program \u2014 or say \u201Cnot sure, help me find it\u201D]') + '\n\n' +
+      '============================\n' +
+      'THE STAKES \u2014 why now?\n' +
+      '============================\n' +
+      '[Deal size, timeline, next meeting date \u2014 when do you need this?]\n\n' +
+      '============================\n' +
+      'THE WIN \u2014 what does success look like?\n' +
+      '============================\n' +
+      '[e.g., Walk out of the Sept 3 meeting with a signed LOI / drawings in hand]\n\n' +
+      'Let\u2019s go! \uD83D\uDD25\n' +
+      name + '\n' + email + '\n\n' +
+      '\u2014 Sent from FSG Growth HQ'
+    );
+
+    const mailto = 'mailto:bobby.graham@fsgi.com?cc=' + encodeURIComponent(email) +
+                   '&subject=' + subject + '&body=' + body;
+
+    window.location.href = mailto;
+
+    formWrap.style.display = 'none';
+    confirmWrap.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
