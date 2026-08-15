@@ -593,10 +593,10 @@
         <span class="card-cta">Open</span>
       </a>
 
-      <a href="story/master-2026.html" class="card" data-section="story" data-tags="master overview corporate 2026">
-        <div class="card-top"><span class="pill new">Updated</span><span class="card-date">Aug 2026</span></div>
-        <h3>FSG Master Presentation 2026</h3>
-        <p>The flagship story. Who we are, what we solve, and why clients win with FSG.</p>
+      <a href="story/institution-culture.html" class="card" data-section="story" data-tags="institution culture mission values hustle team client first training">
+        <div class="card-top"><span class="pill new">Live Now</span><span class="card-date">Aug 2026</span></div>
+        <h3>The Institution &amp; Culture</h3>
+        <p>Who FSG is when nobody's watching. Mission, pillars, principles, and the sales standard — in 10 slides.</p>
         <span class="card-cta">Open</span>
       </a>
 
@@ -656,6 +656,13 @@
     <p class="section-sub">Who FSG is, the business lines and products we bring, why we exist, what we sell, and how we sell it. Start every new relationship here.</p>
     <hr class="section-rule">
     <div class="grid">
+
+      <a href="story/institution-culture.html" class="card" data-section="story" data-tags="institution culture mission values hustle team client first training empowering people good work">
+        <div class="card-top"><span class="pill new">New</span><span class="card-date">Aug 2026</span></div>
+        <h3>The Institution &amp; Culture</h3>
+        <p>Who FSG is when nobody's watching. Mission, the three pillars, operating principles, voice, and the sales standard.</p>
+        <span class="card-cta">Open</span>
+      </a>
 
       <a href="story/master-2026.html" class="card" data-section="story" data-tags="master overview corporate story fsg 2026 why">
         <div class="card-top"><span class="pill">Flagship</span><span class="card-date">Aug 2026</span></div>
@@ -812,7 +819,7 @@
   </section>
 
   <div class="empty-state" id="emptyState">
-    Nothing matches. Try a client name, vertical, or "playbook."
+    Nothing here yet — decks appear automatically as they go live. Try clearing your search.
   </div>
 
   <!-- ============ WHAT IF — The Close ============ -->
@@ -899,8 +906,9 @@
 
       const matchesSearch = !q || tags.includes(q) || title.includes(q) || desc.includes(q);
       const matchesFilter = activeFilter === 'all' || section === activeFilter;
+      const isAvailable = card.dataset.available === 'true';
 
-      const show = matchesSearch && matchesFilter;
+      const show = isAvailable && matchesSearch && matchesFilter;
       card.style.display = show ? 'flex' : 'none';
       if (show) anyVisible = true;
     });
@@ -915,6 +923,38 @@
 
     emptyState.style.display = anyVisible ? 'none' : 'block';
   }
+
+  // ---------- Auto-detect live decks ----------
+  // Cards start hidden; each card's link is checked against the server.
+  // Drop a deck file into the repo and its card appears automatically.
+  cards.forEach(card => { card.dataset.available = 'false'; });
+
+  async function checkAvailability() {
+    // Local file preview can't fetch — show everything so the index is reviewable
+    if (location.protocol === 'file:') {
+      cards.forEach(card => { card.dataset.available = 'true'; });
+      applyFilters();
+      return;
+    }
+    const checks = Array.from(cards).map(async (card) => {
+      const href = card.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http')) {
+        card.dataset.available = 'true';
+        return;
+      }
+      try {
+        const res = await fetch(href, { method: 'HEAD', cache: 'no-store' });
+        card.dataset.available = res.ok ? 'true' : 'false';
+      } catch (e) {
+        card.dataset.available = 'false';
+      }
+    });
+    await Promise.all(checks);
+    applyFilters();
+  }
+
+  applyFilters();       // initial paint: everything hidden until checks return
+  checkAvailability();  // reveal what's live
 
   search.addEventListener('input', applyFilters);
 
