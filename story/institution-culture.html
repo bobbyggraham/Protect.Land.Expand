@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Institution & Culture — Bobby Graham, FSG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg:#0b1421; --surface:#15253f; --surface2:#1c3050; --border:#1e3558;
+  --accent:#ebb018; --accent-glow:rgba(235,176,24,0.12);
+  --text:#F2EEE9; --text-muted:#718dbc; --text-subtle:#3a4d6e;
+  --font-head:'Oswald','Arial Black',sans-serif;
+  --font-body:'Open Sans',Arial,Helvetica,sans-serif;
+}
+html,body{width:100%;height:100%;background:var(--bg);font-family:var(--font-body);color:var(--text);overflow:hidden;-webkit-font-smoothing:antialiased;}
+#deck{width:100vw;height:100vh;position:relative;overflow:hidden;}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:6vh 8vw;opacity:0;transform:translateY(20px);transition:opacity .38s cubic-bezier(.4,0,.2,1),transform .38s cubic-bezier(.4,0,.2,1);pointer-events:none;z-index:1;}
+.slide.active{opacity:1;transform:translateY(0);pointer-events:all;z-index:2;}
+.slide.out{opacity:0;transform:translateY(-20px);}
+#counter{position:fixed;top:28px;right:72px;font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--text-subtle);z-index:100;}
+#counter b{color:var(--text-muted);font-weight:600;}
+#nav-dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:7px;z-index:100;}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--text-subtle);cursor:pointer;transition:background .2s,transform .2s;}
+.dot:hover{background:var(--text-muted);}
+.dot.on{background:var(--accent);transform:scale(1.35);}
+#hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--text-subtle);letter-spacing:.07em;z-index:100;user-select:none;}
+.glow{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;}
+.glow-a{width:700px;height:700px;background:rgba(235,176,24,.035);top:-250px;right:-200px;}
+.glow-b{width:500px;height:500px;background:rgba(54,90,160,.08);bottom:-200px;left:-150px;}
+.eyebrow{font-family:var(--font-head);font-size:clamp(9px,1vw,12px);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+.hl{color:var(--accent);font-style:normal;}
+.l-statement{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:860px;}
+.l-statement .big{font-family:var(--font-head);font-size:clamp(52px,8.5vw,108px);font-weight:700;line-height:1.0;letter-spacing:-2px;margin-bottom:28px;}
+.l-statement .sub{font-size:clamp(15px,1.7vw,22px);font-style:italic;color:var(--text-muted);line-height:1.6;margin-bottom:32px;max-width:600px;}
+.rule{width:44px;height:2px;background:var(--accent);margin:0 auto 28px;}
+.byline{font-size:clamp(10px,1vw,12px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text-subtle);}
+.watch{display:inline-block;margin-bottom:28px;padding:13px 26px;border:1px solid var(--accent);border-radius:8px;color:var(--accent);text-decoration:none;font-family:var(--font-head);font-weight:600;letter-spacing:.08em;font-size:clamp(12px,1.3vw,15px);transition:background .2s,color .2s;}
+.watch:hover{background:var(--accent);color:var(--bg);}
+.l-section{display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:1060px;}
+.l-section .big{font-family:var(--font-head);font-size:clamp(36px,5.8vw,72px);font-weight:700;line-height:1.06;letter-spacing:-1.5px;margin-bottom:36px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 26px;}
+.card.hi{border-color:var(--accent);box-shadow:inset 0 0 50px var(--accent-glow);}
+.c-label{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.c-title{font-size:clamp(14px,1.6vw,18px);font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.25;}
+.c-body{font-size:clamp(11px,1.2vw,14px);color:var(--text-muted);line-height:1.55;}
+.l-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:1060px;width:100%;align-items:center;}
+.l-split .big{font-family:var(--font-head);font-size:clamp(34px,5vw,62px);font-weight:700;line-height:1.06;letter-spacing:-1px;margin-bottom:18px;}
+.l-split .desc{font-size:clamp(13px,1.45vw,17px);color:var(--text-muted);line-height:1.65;}
+.feat-list{display:flex;flex-direction:column;gap:10px;}
+.feat{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;}
+.fdot{width:7px;height:7px;border-radius:50%;background:var(--accent);margin-top:5px;flex-shrink:0;}
+.ft{font-size:clamp(13px,1.4vw,16px);font-weight:600;color:var(--text);line-height:1.35;}
+.fs{font-size:clamp(10px,1.1vw,13px);color:var(--text-muted);margin-top:3px;line-height:1.4;}
+
+/* ---------- Growth HQ home link ---------- */
+#home-link{position:fixed;top:24px;left:28px;z-index:100;font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);text-decoration:none;transition:color .2s;}
+#home-link:hover{color:var(--accent);}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px){
+  .slide{padding:8vh 6vw 10vh;align-items:flex-start;overflow-y:auto;}
+  .grid{grid-template-columns:1fr;gap:10px;}
+  .l-split{grid-template-columns:1fr;gap:28px;}
+  .l-statement .big{font-size:clamp(34px,10vw,52px);letter-spacing:-1px;}
+  .l-section .big{font-size:clamp(28px,8vw,40px);margin-bottom:22px;}
+  .card{padding:16px 18px;}
+  #nav-dots{right:12px;gap:6px;}
+  #counter{top:20px;right:44px;font-size:11px;}
+  #home-link{top:18px;left:16px;}
+  #hint{display:none;}
+}
+</style>
+</head>
+<body>
+<div id="deck">
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <a id="home-link" href="../index.html">&larr; Growth HQ</a>
+  <div id="counter"><b>01</b> / 1</div>
+  <div id="nav-dots"></div>
+  <div id="hint">arrows or swipe to navigate · F for fullscreen</div>
+
+  <div class="slide active">
+    <div class="l-statement">
+      <div class="eyebrow">Sales Training · The Institution & Culture</div>
+      <h1 class="big">The Institution &<br><em class="hl">Culture</em></h1>
+      <p class="sub">Who FSG is when nobody's watching. Hustle, team, client-first — the story we sell to customers and to ourselves.</p>
+      <div class="rule"></div>
+      <div class="byline">Bobby Graham &nbsp;·&nbsp; CGO, FSG</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-statement">
+      <div class="eyebrow">Our Mission</div>
+      <h1 class="big">To be an institution dedicated to <em class="hl">timeless contribution and service.</em></h1>
+      <p class="sub">Contribution + Service = Valuable. Find a way to be valuable inside and out — we are <em class="hl">Empowering People to Do Good Work.</em></p>
+      <div class="rule"></div>
+      <div class="byline">Bobby Graham &nbsp;·&nbsp; CGO, FSG</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-statement">
+      <div class="eyebrow">How We Thrive</div>
+      <h1 class="big">&ldquo;Empowering people<br>to do <em class="hl">good work</em>.&rdquo;</h1>
+      <p class="sub">Tools, trades, and territory matter. But FSG thrives because of who fills it — and how they show up for each other and for the client. Two minutes, in their own words.</p>
+      <a class="watch" href="https://drive.google.com/file/d/1o089m_YhWSJrph4m2rHstTzNnjnfnHLy/view?usp=sharing" target="_blank" rel="noopener">▶ &nbsp;Watch: FSG People</a>
+      <div class="byline">Bobby Graham &nbsp;·&nbsp; CGO, FSG</div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-section">
+      <div class="eyebrow">What · The Identity</div>
+      <h2 class="big">Who <em class="hl">FSG</em> is.</h2>
+      <div class="grid">
+        <div class="card hi">
+          <div class="c-label">Purpose</div>
+          <div class="c-title">Empowering people to do good work</div>
+          <div class="c-body">Lighting, electric, signs, energy, automation, technology — delivered as a single answer to "keep my building running."</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Story</div>
+          <div class="c-title">From a single van to $1.2B — built on faith and grit</div>
+          <div class="c-body">Founded on the love of God and the courage to start small. Family-rooted, founder-vision-led, grown by doing the work — never by buying the logo. Built to give our people a chance to serve, and the means to provide for those they love.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Heritage</div>
+          <div class="c-title">Trades-first, customer-always</div>
+          <div class="c-body">We're craftsmen who built a company, not consultants who hired some. The work is the brand.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Promise</div>
+          <div class="c-title">Simple Strength</div>
+          <div class="c-body">Two words. Clear capability, no posturing. Promised on every page and every project.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-section">
+      <div class="eyebrow">What · The Culture</div>
+      <h2 class="big">Three things we <em class="hl">never</em> compromise.</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="c-label">Pillar 01</div>
+          <div class="c-title">Hustle Culture</div>
+          <div class="c-body">We outwork the problem. Bias to action, draft first, refine after — and never admire a problem from a distance.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Pillar 02</div>
+          <div class="c-title">Team Dynamics</div>
+          <div class="c-body">The team's number is bigger than yours. Share the play, open the deal review, win as one bench.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Pillar 03</div>
+          <div class="c-title">Client-First Mentality</div>
+          <div class="c-body">Every decision answers one question: does this help the client succeed? If not, we don't ship it.</div>
+        </div>
+        <div class="card hi">
+          <div class="c-label">The Payoff</div>
+          <div class="c-title">Valuable, inside &amp; out</div>
+          <div class="c-body">Contribution + Service = Valuable. That's how we Empower People to Do Good Work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-section">
+      <div class="eyebrow">Operating Principles</div>
+      <h2 class="big">How we <em class="hl">decide</em>.</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="c-label">Principle 01</div>
+          <div class="c-title">Customer first, always</div>
+          <div class="c-body">Every decision answers one question: does this help the customer succeed? If not, we don't ship it.</div>
+        </div>
+        <div class="card hi">
+          <div class="c-label">Principle 02</div>
+          <div class="c-title">Bias to action</div>
+          <div class="c-body">Draft first, refine after. Speed of decision is a competitive advantage. We don't admire problems.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Principle 03</div>
+          <div class="c-title">Own the outcome</div>
+          <div class="c-body">No handoffs without ownership. If your name is on it, the result is yours — wins and losses both.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Principle 04</div>
+          <div class="c-title">Tell the truth fast</div>
+          <div class="c-body">Bad news travels first. We escalate before we explain. The cost of delay is always higher than the cost of candor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-section">
+      <div class="eyebrow">How We Talk</div>
+      <h2 class="big">The FSG <em class="hl">voice</em>.</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="c-label">Voice 01</div>
+          <div class="c-title">Customer as hero</div>
+          <div class="c-body">They succeed. We guide. Never "look how great we are." Always "here's how you win."</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Voice 02</div>
+          <div class="c-title">Outcomes, not features</div>
+          <div class="c-body">Savings. Reliability. Speed. Lead every line with the result, follow with the proof.</div>
+        </div>
+        <div class="card hi">
+          <div class="c-label">Voice 03</div>
+          <div class="c-title">Clear, not clever</div>
+          <div class="c-body">Active voice. Short sentences. If a term needs explaining, explain it or cut it.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Voice 04</div>
+          <div class="c-title">Confident, not arrogant</div>
+          <div class="c-body">We're experts because we've done it. We're approachable because we know it's their building, not ours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-section">
+      <div class="eyebrow">Rituals & Recognition</div>
+      <h2 class="big">What we <em class="hl">celebrate</em>, repeats.</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="c-label">Ritual 01</div>
+          <div class="c-title">Friday Wins</div>
+          <div class="c-body">Five-line Slack post. New logo, expansion, save, referral, customer quote. Public, weekly, no exceptions.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Ritual 02</div>
+          <div class="c-title">Loss Reviews</div>
+          <div class="c-body">Every loss above $250K reviewed within 14 days. Not blame — pattern recognition. Lessons logged, shared, applied.</div>
+        </div>
+        <div class="card hi">
+          <div class="c-label">Ritual 03</div>
+          <div class="c-title">Customer Quote of the Week</div>
+          <div class="c-body">One actual customer line, posted to all-hands. Reminds everyone what we're here to do.</div>
+        </div>
+        <div class="card">
+          <div class="c-label">Ritual 04</div>
+          <div class="c-title">Annual Summit Club</div>
+          <div class="c-body">Top performers recognized in front of the company. Earned, named, remembered.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-split">
+      <div>
+        <div class="eyebrow">The Sales Team Standard</div>
+        <h2 class="big">What "good" <em class="hl">looks</em> like.</h2>
+        <p class="desc">Standards are quiet. They show up in how a forecast is built, how a customer email reads, how a teammate is treated. The team can describe them — because they live them.</p>
+      </div>
+      <div class="feat-list">
+        <div class="feat"><div class="fdot"></div><div><div class="ft">Show up prepared</div><div class="fs">Every customer call has a written agenda and a researched stakeholder map.</div></div></div>
+        <div class="feat"><div class="fdot"></div><div><div class="ft">Forecast like an owner</div><div class="fs">Commit only what you'll close. Sandbagging and over-promising are both disqualifying.</div></div></div>
+        <div class="feat"><div class="fdot"></div><div><div class="ft">Make teammates better</div><div class="fs">Share the play. Open the deal review. The team's number is bigger than yours.</div></div></div>
+        <div class="feat"><div class="fdot"></div><div><div class="ft">Honor the work</div><div class="fs">Field crews, project managers, ops partners — they're the reason we're invited back. Treat them that way.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="l-statement">
+      <div class="eyebrow">Now / Next</div>
+      <h1 class="big">Live one <em class="hl">principle</em> this week.</h1>
+      <p class="sub">Pick one. Tell the truth fast. Or own the outcome. Or send the Friday Win. Find a way to be valuable — that's how we do good work.</p>
+      <div class="rule"></div>
+      <div class="byline">Bobby Graham &nbsp;·&nbsp; CGO, FSG</div>
+    </div>
+  </div>
+
+</div>
+<script>
+(function(){
+  const slides=Array.from(document.querySelectorAll('.slide'));
+  const total=slides.length;
+  let cur=0;
+  const dotsEl=document.getElementById('nav-dots');
+  slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.addEventListener('click',()=>go(i));dotsEl.appendChild(d);});
+  function updateUI(){const n=String(cur+1).padStart(2,'0');document.getElementById('counter').innerHTML='<b>'+n+'</b> / '+total;dotsEl.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));}
+  function go(n){if(n===cur)return;slides[cur].classList.add('out');slides[cur].classList.remove('active');setTimeout(()=>slides[n].classList.remove('out'),380);cur=Math.max(0,Math.min(total-1,n));slides[cur].classList.add('active');updateUI();}
+  function next(){if(cur<total-1)go(cur+1);}
+  function prev(){if(cur>0)go(cur-1);}
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown')next();if(e.key==='ArrowLeft'||e.key==='ArrowUp')prev();if(e.key==='f'||e.key==='F')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();});
+  let tx=0;document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});document.addEventListener('touchend',e=>{const dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>40)dx>0?next():prev();},{passive:true});
+  updateUI();
+})();
+</script>
+</body>
+</html>
